@@ -7,7 +7,7 @@
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js"
   },
-  "type": "module", 
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "@apollo/server": "^4.11.0",
     "@graphql-tools/merge": "^9.0.8",
     "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
     "connect-mongodb-session": "^5.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
