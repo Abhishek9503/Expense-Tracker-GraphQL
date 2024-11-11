@@ -1,6 +1,7 @@
 import { Query } from "mongoose";
 import { users } from "../dummyData/data.js";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
+import User from "../models/user.model.js";
 
 const userResolver = {
   Mutation: {
@@ -42,7 +43,7 @@ const userResolver = {
 
     login: async (_, { input }, context) => {
       try {
-        const { username, paasword } = input;
+        const { username, password } = input;
         const { user } = await context.authenticate("graphql-local", {
           username,
           password,

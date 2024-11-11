@@ -5,11 +5,11 @@ import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
 
+// This is for setuping passportjs
 import passport from "passport";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
-import { configurePassport } from "./passport/passport.config.js";
 
 import {  buildContext } from "graphql-passport";
 
@@ -18,6 +18,7 @@ import { ApolloServer } from "@apollo/server";
 import mergedResolvers from "./resolvers/index.js";
 import mergedTypeDefs from "./typeDefs/index.js";
 import { connectDB } from "./db/connectDB.js";
+import { configurePassport } from "./passport/passport.config.js";Ä
 
 //if we will not call this then we were not able to use the .env file
 dotenv.config();
