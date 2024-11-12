@@ -5,10 +5,13 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import TransactionForm from "../components/TransactionForm";
 
 import { MdLogout } from "react-icons/md";
+import Cards from "../components/Cards";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HomePage = () => {
+
+	
 	const chartData = {
 		labels: ["Saving", "Expense", "Investment"],
 		datasets: [
@@ -54,7 +57,7 @@ const HomePage = () => {
 
 					<TransactionForm />
 				</div>
-				{/* <Cards /> */}
+				<Cards/>
 			</div>
 		</>
 	);

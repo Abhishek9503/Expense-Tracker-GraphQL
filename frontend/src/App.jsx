@@ -14,11 +14,12 @@ function App() {
 		<>
 			{authUser && <Header />}
 			<Routes>
-				{/* <Route path='/' element={<HomePage />} /> */}
-				{/* <Route path='/login' element={<LoginPage />} /> */}
+				<Route path='/' element={<HomePage />} />
+				<Route path='/login' element={<LoginPage />} />
 				<Route path='/signup' element={<SignUpPage />} />
+				<Route path='/transaction' element={<TransactionPage />} />
 				{/* <Route path='/transaction/:id' element={<TransactionPage />} /> */}
-				{/* <Route path='*' element={<NotFound />} /> */}
+				<Route path='*' element={<NotFound />} />
 			</Routes>
 		</>
 	);
