@@ -18,7 +18,7 @@ import { ApolloServer } from "@apollo/server";
 import mergedResolvers from "./resolvers/index.js";
 import mergedTypeDefs from "./typeDefs/index.js";
 import { connectDB } from "./db/connectDB.js";
-import { configurePassport } from "./passport/passport.config.js";Ä
+import { configurePassport } from "./passport/passport.config.js";
 
 //if we will not call this then we were not able to use the .env file
 dotenv.config();
@@ -67,7 +67,7 @@ await server.start();
 // Set up our Express middleware to handle CORS, body parsing,
 // and our expressMiddleware function.
 app.use(
-  "/",
+  "/graphql",
   cors({
     origin: "http://localhost:3000",
     credentials: true,
@@ -84,4 +84,4 @@ app.use(
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 
 await connectDB();
-console.log(`🚀 Server ready at http://localhost:4000/`);
+console.log(`🚀 Server ready at http://localhost:4000/graphql`);
