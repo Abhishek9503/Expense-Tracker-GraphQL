@@ -6,6 +6,9 @@ import TransactionForm from "../components/TransactionForm";
 
 import { MdLogout } from "react-icons/md";
 import Cards from "../components/Cards";
+import toast from "react-hot-toast";
+import { useMutation } from "@apollo/client";
+import { LOGOUT } from "../graphql/mutations/user.mutation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -28,11 +31,23 @@ const HomePage = () => {
 		],
 	};
 
-	const handleLogout = () => {
+	const[logout,{loading}]=useMutation(LOGOUT,{
+		refetchQueries: ["GetAuthenticatedUser"],
+	});	
+
+	const handleLogout = async() => {
+		try {
+			await logout()
+			//clear the apolli client  cach from THE DOCS
+			//https://www.apollographql.com/docs/react/caching/advanced-topics/#:~:text=Resetting%20the%20cache%20entirely%20is%20a%20more%20drastic%20measure%20that%20you%20should%20use%20only%20when%20you%20want%20to%20completely%20clear%20the%20cache%20and%20start%20from%20scratch.
+		} catch (error) {
+			console.error("Error logging out", error);
+			toast.error(error.message);
+		}
+
 		console.log("Logging out...");
 	};
 
-	const loading = false;
 
 	return (
 		<>

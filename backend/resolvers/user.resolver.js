@@ -1,5 +1,3 @@
-import { Query } from "mongoose";
-import { users } from "../dummyData/data.js";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
 import User from "../models/user.model.js";
 
@@ -59,10 +57,10 @@ const userResolver = {
     logout: async (_, __, context) => {
       try {
         await context.logout();
-        req.session.destroy((err) => {
+       context.req.session.destroy((err) => {
           if (err) throw err;
         });
-        res.clearCookie("connect.sid");
+        context.res.clearCookie("connect.sid");
         return { message: "Logged out successfully" };
       } catch (error) {
         console.log("Error in logout", error);

@@ -29,14 +29,15 @@ const SignUpPage = () => {
 		}
 	};
 	
-	const [signup , {loading, error}] = useMutation(SIGNUP_UP);
+	const [signup , {loading, error}] = useMutation(SIGNUP_UP,{
+		refetchQueries: ["GetAuthenticatedUser"],
+	});
 
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(signUpData);
 		try {
-			debugger;
 			 await signup({
 				variables: {
 					input: signUpData,
@@ -113,6 +114,7 @@ const SignUpPage = () => {
 									{loading? "Loading...": "Sign Up"}
 									
 								</button>
+								{error && <p className='text-red-500 text-sm mt-2'>{error.message}</p>}
 							</div>
 						</form>
 						<div className='mt-4 text-sm text-gray-600 text-center'>
