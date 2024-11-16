@@ -1,0 +1,10 @@
+
+type Query {
+  // ...existing code...
+  categoryStatistics: [CategoryStatistics!]!
+}
+
+type CategoryStatistics {
+  category: String!
+  totalAmount: Float!
+}

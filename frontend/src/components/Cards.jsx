@@ -7,8 +7,6 @@ const Cards = ({authUser}) => {
   if (error) return <p>Error ...{error.message}</p>;
   if (loading) return <p>Loading...</p>;
 
-  console.log("This is  cards data ", data);
-
   //TODO => ADD RELATIONSHIPS
   return (
     <div className="w-full px-10 min-h-[40vh]">

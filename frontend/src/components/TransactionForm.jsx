@@ -7,7 +7,7 @@ const TransactionForm = () => {
 	//TODO: Reftech the transaction query after creating a new transaction
 	//TODO: When relationship are added  change a  refetch query logic a bit 
 	const [createTransaction,{loading}] = useMutation(CREATE_TRANSACTION, {
-		refetchQueries: ["GetTransactions"],
+		refetchQueries: ["GetTransactions","GetTransactionStatistics"]
 	});
 
 
