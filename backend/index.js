@@ -4,6 +4,7 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
 
 // This is for setuping passportjs
 import passport from "passport";
@@ -27,6 +28,8 @@ configurePassport();
 const app = express();
 
 const httpServer = http.createServer(app);
+
+const __dirname = path.resolve();
 
 // const MongoDBStore = connectMongo(session);
 
@@ -79,6 +82,14 @@ app.use(
     context: async ({ req,res }) => buildContext({ req,res }),
   })
 );
+
+//npm run build will build our frontend application, and it will be optimize version of our application
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+app.get("*", (req ,res) => {
+  res.sendFile(path.join(__dirname, "frontend/dist", "index.html"));
+})
+
 
 // Modified server startup
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
